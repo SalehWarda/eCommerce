@@ -42,6 +42,24 @@ class ProductsRequest extends FormRequest
                     'images.*'=> 'mimes:jpg,jpeg,png,gif|max:3000'
 
                 ];
+            };
+
+            case 'PATCH':
+            {
+
+                return [
+                    'name' => 'required|max:255',
+                    'description' => 'required',
+                    'product_category_id' => 'required',
+                    'status'=>'required',
+                    'quantity' => 'required|numeric',
+                    'price' => 'required|numeric',
+                    'featured'=>'required',
+                    'tags.*' => 'required',
+                    'images' => 'nullable',
+                    'images.*'=> 'mimes:jpg,jpeg,png,gif|max:3000'
+
+                ];
             }
 
 

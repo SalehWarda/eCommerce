@@ -66,6 +66,9 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::group(['prefix' => 'products', 'as' => 'admin.'], function () {
 
+            Route::post('/media/delete', [ProductsController::class, 'removeImage'])->name('products.removeImage');
+
+
             Route::get('/index', [ProductsController::class, 'index'])->name('products');
             Route::get('/create', [ProductsController::class, 'create'])->name('products.create');
             Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
