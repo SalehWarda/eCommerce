@@ -149,7 +149,7 @@ class ProductsController extends Controller
         }
 
         toastr()->success('Updated Successfully');
-        return redirect()->route('admin.products');
+        return redirect()->to($request->page_url);
 
 
     }

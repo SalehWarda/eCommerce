@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\Auth\LoginController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\ProductCategoriesController;
+use App\Http\Controllers\Backend\ProductCouponController;
 use App\Http\Controllers\Backend\ProductsController;
 use App\Http\Controllers\Backend\TagsController;
 use Illuminate\Support\Facades\Auth;
@@ -79,7 +80,24 @@ Route::group(['prefix' => 'admin'], function () {
 
         });
 
-        ########################### Products Route End ##############################
+
+        ########################### ProductsCoupon Route Begin ##############################
+
+        Route::group(['prefix' => 'product_coupons', 'as' => 'admin.'], function () {
+
+
+
+            Route::get('/index', [ProductCouponController::class, 'index'])->name('coupons');
+            Route::get('/create', [ProductCouponController::class, 'create'])->name('coupons.create');
+            Route::post('/store', [ProductCouponController::class, 'store'])->name('coupons.store');
+            Route::get('/edit/{id}', [ProductCouponController::class, 'edit'])->name('coupons.edit');
+            Route::patch('/update', [ProductCouponController::class, 'update'])->name('coupons.update');
+            Route::delete('/delete', [ProductCouponController::class, 'destroy'])->name('coupons.delete');
+
+
+        });
+
+        ########################### ProductsCoupon Route End ##############################
 
     });
 

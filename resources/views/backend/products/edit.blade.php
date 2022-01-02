@@ -34,6 +34,7 @@
                         @method('PATCH')
 
                         <input type="hidden" name="id" value="{{$product->id}}">
+                        <input type="hidden" name="page_url" value="{{\Illuminate\Support\Facades\URL::previous()}}">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

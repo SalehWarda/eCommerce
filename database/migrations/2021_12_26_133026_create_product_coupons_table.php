@@ -15,6 +15,17 @@ class CreateProductCouponsTable extends Migration
     {
         Schema::create('product_coupons', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->string('type');
+            $table->unsignedBigInteger('value')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('status')->default(false);
+            $table->unsignedBigInteger('use_times')->nullable();
+            $table->unsignedBigInteger('used_times')->default(0);
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('expire_date')->nullable();
+            $table->unsignedBigInteger('greater_than')->nullable();
+
             $table->timestamps();
         });
     }
