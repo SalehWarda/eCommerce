@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Mindscms\Entrust\Traits\EntrustUserWithPermissionsTrait;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, EntrustUserWithPermissionsTrait;
+    use HasApiTokens, HasFactory,SearchableTrait, Notifiable, EntrustUserWithPermissionsTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +29,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'status',
         'email',
         'password',
+    ];
+
+    public $searchable = [
+        'columns' => [
+
+            'users.first_name' => 10,
+            'users.last_name' => 10,
+            'users.username' => 10,
+            'users.mobile' => 10,
+            'users.email' => 10,
+        ]
     ];
     protected $appends=['full_name'];
 
@@ -53,4 +66,21 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return ucfirst($this->first_name).' '.ucfirst($this->last_name);
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function status(){
+
+        return $this->status ?'Active':'Inactive';
+    }
+
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(CustomerAddress::class);
+    }
+
+
 }

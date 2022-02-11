@@ -5,6 +5,7 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -43,6 +44,28 @@ class Product extends Model
 
     }
 
+    public function scopeFeatured($query){
+
+        return $query->whereFeatured(true);
+    }
+
+    public function scopeActive($query){
+
+        return $query->whereStatus(true);
+    }
+
+    public function scopeHasQuantity($query){
+
+        return $query->where('quantity','>',0);
+    }
+    public function scopeActiveCategory($query){
+
+        return $query->whereHas('category',function ($query){
+
+            $query->whereStatus(1);
+        });
+    }
+
     public function status(){
 
         return $this->status == 1 ? 'Active' : 'Inactive';
@@ -68,5 +91,10 @@ class Product extends Model
     {
 
         return $this->morphMany(Media::class,'mediable');
+    }
+
+    public function reviews(): HasMany
+    {
+       return $this->hasMany(Review::class);
     }
 }

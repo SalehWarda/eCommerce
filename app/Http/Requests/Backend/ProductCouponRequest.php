@@ -55,6 +55,7 @@ class ProductCouponRequest extends FormRequest
                     'status' => 'required|in:0,1'
                 ];
             }
+            default: break;
         }
 
     }

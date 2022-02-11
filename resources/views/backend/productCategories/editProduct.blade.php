@@ -68,8 +68,8 @@
                                     <select class="form-control form-control-lg mb-15" name="status">
 
                                         <option selected disabled> Choose...</option>
-                                        <option value="1" {{old('status',$category->status) == 1 ? 'selected' : null}}>Active</option>
-                                        <option value="0" {{old('status',$category->status) == 0 ? 'selected' : null}}>Inactive</option>
+                                        <option value="1" {{old('status',$category->status) == '1' ? 'selected' : null}}>Active</option>
+                                        <option value="0" {{old('status',$category->status) == '0' ? 'selected' : null}}>Inactive</option>
 
                                     </select>
                                     @error('status')

@@ -240,7 +240,8 @@ return [
 
         'Entrust'   => Mindscms\Entrust\EntrustFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
 
 

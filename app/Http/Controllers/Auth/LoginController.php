@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -19,7 +20,9 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers{
+        logout as protected originalLogout;
+    }
 
     /**
      * Where to redirect users after login.
@@ -59,6 +62,28 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function logout(Request $request)
+    {
+
+        $cart = collect($request->session()->get('cart'));
+
+        /* Call original logout Method */
+
+        $response = $this->originalLogout($request);
+
+        /* Repopulate session with cart */
+
+        if (!config('cart.destroy_on_logout')){
+
+            $cart->each(function ($rows , $identifier) use($request){
+
+                $request->session()->put('cart.'. $identifier , $rows);
+            });
+        }
+
+        return $response;
+
+    }
 
 
 }

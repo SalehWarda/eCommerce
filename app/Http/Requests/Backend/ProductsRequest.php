@@ -62,11 +62,10 @@ class ProductsRequest extends FormRequest
                 ];
             }
 
+            default: break;
 
 
         }
-        return [
-            //
-        ];
+
     }
 }

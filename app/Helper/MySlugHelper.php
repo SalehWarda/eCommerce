@@ -70,4 +70,6 @@ class MySlugHelper
         unset($_transliteration);
         return mb_strtolower(preg_replace(array_keys($map), array_values($map), $string));
     }
+
+
 }

@@ -47,6 +47,11 @@ class ProductCategory extends Model
         return $this->hasMany(self::class,'parent_id');
     }
 
+    public function appearedChildren(){
+
+        return $this->hasMany(self::class,'parent_id','id')->whereStatus(true);
+    }
+
 
     public function products(){
 

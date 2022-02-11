@@ -25,13 +25,13 @@ class EntrustSeeder extends Seeder
         $customerRole = Role::create(['name' => 'customer', 'display_name' => 'Customer', 'description' => 'Customer', 'allowed_route' => null,]);
 
 
-        $admin = User::create(['first_name'=>'Admin','last_name'=>'System','username'=>'admin','email'=>'admin@gmail.com','email_verified_at'=>now(),'mobile'=>'05920983231','user_image'=>'avatar.svg','status'=>1,'password'=>bcrypt('sa403737570sa'),'remember_token'=>Str::random(10)]);
+        $admin = User::create(['first_name'=>'Admin','last_name'=>'System','username'=>'admin','email'=>'admin@gmail.com','email_verified_at'=>now(),'mobile'=>'05920983231','user_image'=>'avatar.png','status'=>1,'password'=>bcrypt('sa403737570sa'),'remember_token'=>Str::random(10)]);
         $admin->attachRole($adminRole);
 
-        $supervisor = User::create(['first_name'=>'Supervisor','last_name'=>'System','username'=>'supervisor','email'=>'supervisor@gmail.com','email_verified_at'=>now(),'mobile'=>'05920983232','user_image'=>'avatar.svg','status'=>1,'password'=>bcrypt('sa403737570sa'),'remember_token'=>Str::random(10)]);
+        $supervisor = User::create(['first_name'=>'Supervisor','last_name'=>'System','username'=>'supervisor','email'=>'supervisor@gmail.com','email_verified_at'=>now(),'mobile'=>'05920983232','user_image'=>'avatar.png','status'=>1,'password'=>bcrypt('sa403737570sa'),'remember_token'=>Str::random(10)]);
         $supervisor->attachRole($supervisorRole);
 
-        $customer = User::create(['first_name'=>'Saleh','last_name'=>'AbuWarda','username'=>'salehwarda','email'=>'salehwarda6@gmail.com','email_verified_at'=>now(),'mobile'=>'05920983233','user_image'=>'avatar.svg','status'=>1,'password'=>bcrypt('sa403737570sa'),'remember_token'=>Str::random(10)]);
+        $customer = User::create(['first_name'=>'Saleh','last_name'=>'AbuWarda','username'=>'salehwarda','email'=>'salehwarda6@gmail.com','email_verified_at'=>now(),'mobile'=>'05920983233','user_image'=>'avatar.png','status'=>1,'password'=>bcrypt('sa403737570sa'),'remember_token'=>Str::random(10)]);
         $customer->attachRole($customerRole);
 
 
@@ -45,7 +45,7 @@ class EntrustSeeder extends Seeder
                 'email'=>$faker->unique()->safeEmail,
                 'email_verified_at'=>now(),
                 'mobile'=>'059'.$faker->numberBetween(1000000,9999999),
-                'user_image'=>'avatar.svg',
+                'user_image'=>'avatar.png',
                 'status'=>1,
                 'password'=>bcrypt('sa403737570sa'),
                 'remember_token'=>Str::random(10)]);
