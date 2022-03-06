@@ -16,10 +16,13 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "league/omnipay": "^3.2",
         "livewire/livewire": "^2.10",
         "mindscms/entrust": "^2.5",
         "mindscms/laravelshoppingcart": "^1.2",
         "nicolaslopezj/searchable": "^1.13",
+        "omnipay/paypal": "^3.0",
+        "realrashid/sweet-alert": "^5.0",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

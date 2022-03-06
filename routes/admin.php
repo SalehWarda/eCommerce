@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\CustomersAddressesController;
+use App\Http\Controllers\Backend\PaymentMethodContrller;
 use App\Http\Controllers\Backend\ProductCategoriesController;
 use App\Http\Controllers\Backend\ProductCouponController;
 use App\Http\Controllers\Backend\ProductsController;
@@ -239,6 +240,24 @@ Route::group(['prefix' => 'admin'], function () {
         });
 
         ########################### Shipping Company Route End ##############################
+
+
+       ############################ Payment Methods Route Begin ##############################
+
+        Route::group(['prefix' => 'payment_methods', 'as' => 'admin.'], function () {
+
+            Route::get('/index', [PaymentMethodContrller::class, 'index'])->name('payment_methods');
+            Route::get('/show/{id}', [PaymentMethodContrller::class, 'show'])->name('payment_methods.show');
+            Route::get('/create', [PaymentMethodContrller::class, 'create'])->name('payment_methods.create');
+            Route::post('/store', [PaymentMethodContrller::class, 'store'])->name('payment_methods.store');
+            Route::get('/edit/{id}', [PaymentMethodContrller::class, 'edit'])->name('payment_methods.edit');
+            Route::patch('/update', [PaymentMethodContrller::class, 'update'])->name('payment_methods.update');
+            Route::delete('/delete', [PaymentMethodContrller::class, 'destroy'])->name('payment_methods.delete');
+
+
+        });
+
+        ########################### Payment Methods Route End ##############################
 
 
        ############################ Account Settings Route Begin ##############################
